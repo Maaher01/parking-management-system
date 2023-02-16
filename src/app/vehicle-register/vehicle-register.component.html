@@ -1,0 +1,125 @@
+<!-- Vehicle Registration Form -->
+<div class="bg-slate-200 grid place-content-center">
+    <form class="bg-slate-50 shadow-2xl px-6 py-12 rounded-lg" [formGroup]="registerForm" >
+        <p class="text-2xl font-medium mb-6">Vehicle Registration</p>
+        <div class="flex flex-col py-3">
+            <label class="font-medium text-sm mb-1" for="license_number">License Number</label>
+            <input class="bg-slate-200 px-4 py-3 rounded-lg" type="text" placeholder="Enter vehicle license number..."
+                formControlName="license_number" id="license_number" name="license_number" />
+        </div>
+        <div
+            *ngIf="(registerForm.controls['license_number']?.dirty || registerForm.controls['license_number']?.touched) && registerForm.controls['license_number'].invalid">
+            <small *ngIf="registerForm.controls['license_number']?.hasError('required')">
+                License number is required
+            </small>
+            <small *ngIf="registerForm.controls['license_number']?.hasError('minlength')">
+                License number must contain atleast 4 characters
+            </small>
+            <small *ngIf="registerForm.controls['license_number']?.hasError('maxlength')">
+                License number cannot contain more than 7 characters
+            </small>
+        </div>
+        <div class="flex flex-col py-3">
+            <label class="font-medium text-sm mb-1" for="vehicle_type">Vehicle Type</label>
+            <select class="bg-slate-200 px-4 py-3 rounded-lg" placeholder="Choose vehicle type..." formControlName="vehicle_type"
+                id="vehicle_type" name="vehicle_type">
+                <option>Microbus</option>
+                <option>Car</option>
+                <option>Truck</option>
+            </select>
+        </div>
+        <div
+            *ngIf="(registerForm.controls['vehicle_type']?.dirty || registerForm.controls['vehicle_type']?.touched) && registerForm.controls['vehicle_type'].invalid">
+            <small *ngIf="!!registerForm.controls['vehicle_type']?.hasError('required')">
+                Vehicle type is required
+            </small>
+        </div>
+        <div class="flex flex-col py-3">
+            <label class="font-medium text-sm mb-1" for="owner_name">Owner Name</label>
+            <input class="bg-slate-200 px-4 py-3 rounded-lg" type="text" placeholder="Enter owner name..."
+                formControlName="owner_name" id="owner_name" name="owner_name" />
+        </div>
+        <div
+            *ngIf="(registerForm.controls['owner_name']?.dirty || registerForm.controls['owner_name']?.touched) && registerForm.controls['owner_name'].invalid">
+            <small *ngIf="registerForm.controls['owner_name']?.hasError('required')">
+                Owner name is required
+            </small>
+            <small *ngIf="registerForm.controls['owner_name']?.hasError('minlength')">
+                Owner name must contain atleast 3 letters
+            </small>
+        </div>
+        <div class="flex flex-col py-3">
+            <label class="font-medium text-sm mb-1" for="owner_phone">Owner's Phone No.</label>
+            <input class="bg-slate-200 px-4 py-3 rounded-lg" type="text" placeholder="Enter owner's phone no..."
+                formControlName="owner_phone" id="owner_phone" name="owner_phone" />
+        </div>
+        <div
+            *ngIf="(registerForm.controls['owner_phone']?.dirty || registerForm.controls['owner_phone']?.touched) && registerForm.controls['owner_phone'].invalid">
+            <small *ngIf="registerForm.controls['owner_phone']?.hasError('required')">
+                Mobile number is required
+            </small>
+            <small *ngIf="registerForm.controls['owner_phone']?.hasError('minlength')">
+                Mobile number must have atleast 7 digits.
+            </small>
+            <small *ngIf="registerForm.controls['owner_phone']?.hasError('maxlength')">
+                Mobile number cannot have more than 14 characters.
+            </small>
+        </div>
+        <div class="flex flex-col py-3">
+            <label class="font-medium text-sm mb-1" for="status">Status</label>
+            <select class="bg-slate-200 px-4 py-3 rounded-lg" placeholder="Choose status..." formControlName="status"
+                id="status" name="status">
+                <option>In</option>
+                <option>Out</option>
+            </select>
+        </div>
+        <div
+            *ngIf="(registerForm.controls['status']?.dirty || registerForm.controls['status']?.touched) && registerForm.controls['status'].invalid">
+            <small *ngIf="!!registerForm.controls['status']?.hasError('required')">
+                Status is required
+            </small>
+        </div>
+        <div class="flex flex-col py-3">
+            <label class="bg-slate-200 px-4 py-3 rounded-lg" class="font-medium text-sm mb-1"
+                for="owner_address">Owner's Address</label>
+            <input class="bg-slate-200 px-4 py-3 rounded-lg" type="text" placeholder="Enter owner's address..."
+                formControlName="owner_address" id="owner_address" name="owner_address" />
+        </div>
+        <div
+            *ngIf="(registerForm.controls['owner_address']?.dirty || registerForm.controls['owner_address']?.touched) && registerForm.controls['owner_address'].invalid">
+            <small *ngIf="registerForm.controls['owner_address']?.hasError('required')">
+                Address is required
+            </small>
+            <small *ngIf="registerForm.controls['owner_address']?.hasError('minlength')">
+                Address cannot have less than 4 characters
+            </small>
+        </div>
+        <div class="flex flex-col py-3">
+            <label class="font-medium text-sm mb-1" for="entry_time">Time and date of entry</label>
+            <input class="bg-slate-200 px-4 py-3 rounded-lg" type="datetime-local" 
+                placeholder="Enter time and date of entry..." formControlName="entry_time" id="entry_time" name="entry_time" />
+        </div>
+        <div class="flex flex-col py-3">
+            <label class="font-medium text-sm mb-1" for="exit_time">Time and date of exit</label>
+            <input class="bg-slate-200 px-4 py-3 rounded-lg" type="datetime-local" 
+                placeholder="Enter time and date of exit..." formControlName="exit_time" id="exit_time" name="exit_time" />
+        </div>
+        <div class="flex flex-col py-3">
+            <label class="font-medium text-sm mb-1" for="charge">Charge</label>
+            <input class="bg-slate-200 px-4 py-3 rounded-lg" type="text" placeholder="Enter charge..."
+                formControlName="charge" id="charge" name="charge" />
+        </div>
+        <div
+            *ngIf="(registerForm.controls['owner_name']?.dirty || registerForm.controls['owner_name']?.touched) && registerForm.controls['owner_name'].invalid">
+            <small *ngIf="registerForm.controls['owner_name']?.hasError('required')">
+                Owner name is required
+            </small>
+        </div>
+        <div class="mt-10 mb-4">
+            <button class="bg-cyan-800 hover:bg-cyan-900 cursor-pointer text-white text-sm w-full rounded-lg px-4 py-3"
+                [disabled]="registerForm.invalid">
+                Register
+            </button>
+        </div>
+    </form>
+</div>
