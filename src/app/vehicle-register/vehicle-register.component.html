@@ -1,6 +1,7 @@
 <!-- Vehicle Registration Form -->
-<div class="bg-slate-200 grid place-content-center">
-    <form class="bg-slate-50 shadow-2xl px-6 py-12 rounded-lg" [formGroup]="registerForm" >
+<div class="w-full px-4 md:px-8">
+    <div class="max-w-xl mx-auto my-12 bg-gray-50 rounded-lg">
+    <form class="bg-slate-50 shadow-2xl px-6 py-12 rounded-lg" [formGroup]="registerForm" (ngSubmit)="addVehicle(this.registerForm.value)">
         <p class="text-2xl font-medium mb-6">Vehicle Registration</p>
         <div class="flex flex-col py-3">
             <label class="font-medium text-sm mb-1" for="license_number">License Number</label>
@@ -9,15 +10,15 @@
         </div>
         <div
             *ngIf="(registerForm.controls['license_number']?.dirty || registerForm.controls['license_number']?.touched) && registerForm.controls['license_number'].invalid">
-            <small *ngIf="registerForm.controls['license_number']?.hasError('required')">
+            <mat-error *ngIf="registerForm.controls['license_number']?.hasError('required')">
                 License number is required
-            </small>
-            <small *ngIf="registerForm.controls['license_number']?.hasError('minlength')">
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['license_number']?.hasError('minlength')">
                 License number must contain atleast 4 characters
-            </small>
-            <small *ngIf="registerForm.controls['license_number']?.hasError('maxlength')">
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['license_number']?.hasError('maxlength')">
                 License number cannot contain more than 7 characters
-            </small>
+            </mat-error>
         </div>
         <div class="flex flex-col py-3">
             <label class="font-medium text-sm mb-1" for="vehicle_type">Vehicle Type</label>
@@ -30,9 +31,9 @@
         </div>
         <div
             *ngIf="(registerForm.controls['vehicle_type']?.dirty || registerForm.controls['vehicle_type']?.touched) && registerForm.controls['vehicle_type'].invalid">
-            <small *ngIf="!!registerForm.controls['vehicle_type']?.hasError('required')">
+            <mat-error *ngIf="!!registerForm.controls['vehicle_type']?.hasError('required')">
                 Vehicle type is required
-            </small>
+            </mat-error>
         </div>
         <div class="flex flex-col py-3">
             <label class="font-medium text-sm mb-1" for="owner_name">Owner Name</label>
@@ -41,12 +42,12 @@
         </div>
         <div
             *ngIf="(registerForm.controls['owner_name']?.dirty || registerForm.controls['owner_name']?.touched) && registerForm.controls['owner_name'].invalid">
-            <small *ngIf="registerForm.controls['owner_name']?.hasError('required')">
+            <mat-error *ngIf="registerForm.controls['owner_name']?.hasError('required')">
                 Owner name is required
-            </small>
-            <small *ngIf="registerForm.controls['owner_name']?.hasError('minlength')">
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['owner_name']?.hasError('minlength')">
                 Owner name must contain atleast 3 letters
-            </small>
+            </mat-error>
         </div>
         <div class="flex flex-col py-3">
             <label class="font-medium text-sm mb-1" for="owner_phone">Owner's Phone No.</label>
@@ -55,15 +56,15 @@
         </div>
         <div
             *ngIf="(registerForm.controls['owner_phone']?.dirty || registerForm.controls['owner_phone']?.touched) && registerForm.controls['owner_phone'].invalid">
-            <small *ngIf="registerForm.controls['owner_phone']?.hasError('required')">
+            <mat-error *ngIf="registerForm.controls['owner_phone']?.hasError('required')">
                 Mobile number is required
-            </small>
-            <small *ngIf="registerForm.controls['owner_phone']?.hasError('minlength')">
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['owner_phone']?.hasError('minlength')">
                 Mobile number must have atleast 7 digits.
-            </small>
-            <small *ngIf="registerForm.controls['owner_phone']?.hasError('maxlength')">
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['owner_phone']?.hasError('maxlength')">
                 Mobile number cannot have more than 14 characters.
-            </small>
+            </mat-error>
         </div>
         <div class="flex flex-col py-3">
             <label class="font-medium text-sm mb-1" for="status">Status</label>
@@ -75,9 +76,9 @@
         </div>
         <div
             *ngIf="(registerForm.controls['status']?.dirty || registerForm.controls['status']?.touched) && registerForm.controls['status'].invalid">
-            <small *ngIf="!!registerForm.controls['status']?.hasError('required')">
+            <mat-error *ngIf="!!registerForm.controls['status']?.hasError('required')">
                 Status is required
-            </small>
+            </mat-error>
         </div>
         <div class="flex flex-col py-3">
             <label class="bg-slate-200 px-4 py-3 rounded-lg" class="font-medium text-sm mb-1"
@@ -87,12 +88,12 @@
         </div>
         <div
             *ngIf="(registerForm.controls['owner_address']?.dirty || registerForm.controls['owner_address']?.touched) && registerForm.controls['owner_address'].invalid">
-            <small *ngIf="registerForm.controls['owner_address']?.hasError('required')">
+            <mat-error *ngIf="registerForm.controls['owner_address']?.hasError('required')">
                 Address is required
-            </small>
-            <small *ngIf="registerForm.controls['owner_address']?.hasError('minlength')">
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['owner_address']?.hasError('minlength')">
                 Address cannot have less than 4 characters
-            </small>
+            </mat-error>
         </div>
         <div class="flex flex-col py-3">
             <label class="font-medium text-sm mb-1" for="entry_time">Time and date of entry</label>
@@ -111,9 +112,9 @@
         </div>
         <div
             *ngIf="(registerForm.controls['owner_name']?.dirty || registerForm.controls['owner_name']?.touched) && registerForm.controls['owner_name'].invalid">
-            <small *ngIf="registerForm.controls['owner_name']?.hasError('required')">
+            <mat-error *ngIf="registerForm.controls['owner_name']?.hasError('required')">
                 Owner name is required
-            </small>
+            </mat-error>
         </div>
         <div class="mt-10 mb-4">
             <button class="bg-cyan-800 hover:bg-cyan-900 cursor-pointer text-white text-sm w-full rounded-lg px-4 py-3"
@@ -123,3 +124,4 @@
         </div>
     </form>
 </div>
+

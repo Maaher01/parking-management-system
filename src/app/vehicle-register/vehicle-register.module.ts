@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VehicleRegisterComponent } from './vehicle-register.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field'
+
 const routes: Routes = [
   { path: 'register', component: VehicleRegisterComponent }
 ]
@@ -16,7 +18,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule
   ],
   exports: [
     RouterModule

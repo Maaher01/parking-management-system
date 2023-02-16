@@ -45,6 +45,11 @@ export class VehicleRegisterComponent {
 
   constructor(private fb: FormBuilder, private router: Router) { }
 
-
-
+  addVehicle(newVehicle: any) {
+    let vehicles = JSON.parse(localStorage.getItem('vehicles') || '{}' );
+    // Add New Vehicle
+    vehicles.push(newVehicle);
+    // Set New Vehicle
+    localStorage.setItem('vehicles', JSON.stringify(this.registerForm.value));
+ }
 }
