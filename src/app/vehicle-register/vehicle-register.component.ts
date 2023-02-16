@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
+import { VehicleService } from '../services/vehicle/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-register',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./vehicle-register.component.scss']
 })
 export class VehicleRegisterComponent {
+  vehicles: any
 
   registerForm = this.fb.group({
     license_number: new FormControl('', [
@@ -43,13 +45,11 @@ export class VehicleRegisterComponent {
     ])
   })
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private vehicleService: VehicleService) { }
 
-  addVehicle(newVehicle: any) {
-    let vehicles = JSON.parse(localStorage.getItem('vehicles') || '{}' );
-    // Add New Vehicle
-    vehicles.push(newVehicle);
-    // Set New Vehicle
-    localStorage.setItem('vehicles', JSON.stringify(this.registerForm.value));
+  addVehicle() {
+    let newVehicle = this.registerForm.value
+    this.vehicles.push(newVehicle);
+    this.vehicleService.addVehicle(newVehicle)
  }
 }
